@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
+        <script src="https://kit.fontawesome.com/75ae08cc6f.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script> -->
+        <!-- ico en el pestaña del navegador -->
+        <link rel="shortcut icon" href="IMG/img-presto-logo-nav-trans.ico" type="image/x-icon"/> 
+        <!-- css local -->  
+        <link rel="stylesheet" href="CSS/styles.css"> 
+    <title>LILO</title>
+    </head>
+
+<body>
+    <div class="container-tableros">
+        <nav class="nav-main">
+            <img src="IMG/img-presto-logo-nav.png" alt="todo" class="nav-brand">
+            <ul class="nav-menu">
+                <li>
+                    <a href="index-users.html"><i class="fa-solid fa-users fa-2x"></i></a> 
+                </li>
+                <li>
+                    <a href="index-tableros.html"><i class="fa-solid fa-tablet fa-2x"></i></a>
+                </li> 
+                <li id="btn-abrir-modal-gracias" ><i class="fa-solid fa-laptop-code fa-2x"></i></li>               
+            </ul>
+            <ul>
+                <li >
+                   <a id="userSesion" onclick="abrilModalPerfil()" >Nombre Usuario</a> 
+                </li>    
+            </ul>
+              <div class="menu-btn"> <!-- icono para el menu 3 lineas -->
+                <i class="fas fa-bars fa-2x"></i>
+            </div>
+        </nav>
+
+        <div class="showcase">
+            <div class="title">
+                <h3 >PANEL AYUDA</h3>
+            </div>
+            <div class="guia-help">
+                <p>Agregar: <i class="fa-solid fa-plus "></i> 
+                 || Editar: <i class="fa-solid fa-pen-to-square"></i> 
+                 || Actualizar:   <i class="fa-solid fa-pen"></i> 
+                 || Eliminar: <i class="fa-solid fa-xmark"></i>
+                 || Agregar Usuario: <i class="fa-solid fa-user-plus"></i>
+             </p>
+             </div>
+             <div class="tarjetas-help">
+                <div class="tarjeta-help">
+                    <h4>LILO</h4>
+                    <p>
+                        El objetivo de Lilo es facilitar el seguimiento de las tareas que realizan los miembros de un equipo y dinamizar el flujo de trabajo.
+                    </p>
+                    <p>
+                        El sistema está basado en el método de Kanban, en donde las tareas se agrupan en tres grandes estados: Que hacer, Haciendo, Hecho; permitiendo la visualización gráfica del proceso del proyecto, viendo cuales son las tareas pendientes, las que se están realizándose y las que ya han sido concluidas; el sistema busca optimizar el rendimiento del tiempo.
+                    </p>
+                </div>
+                <div class="tarjeta-help">
+                        <h4>COMO FUNCIONA:</h4>
+                    <p>
+                        Luego de crear una cuenta en la web, el usuario será designado como Administrador de la cuenta y podrá hacer todo tipo de movimientos y cambios. Luego deberá cargar el proyecto en el sistema especificamendo usuarios ( que podrán ser miembrxs o Administradores), tableros de trabajo y tareas ha realizar. 
+                    </p>
+                </div>
+                <div class="tarjeta-help">
+                        <h4>USUARIOS:</h4>
+                    <p>
+                         En la pantalla USUARIOS verás y cargarás todas las personas que quieras, pueden ser miembros, ejecutan tareas relacionadas con el trabajo; o Administradores, puede ser miembros que tienen tareas asignadas y también pueden hacer cambios en tareas de otros miembros. Todos los integrantes que agregues podrán participar de todos los tableros. Por lo cual podría haber miembros que participen en varios tableros. Es importante que asignes colores a cada usuario, te permitirá identificarlos mejor dentro de diferentes espacios de trabajo.
+                    </p>
+                    <br>
+                    <h4>Miembrxs y Administradores</h4>
+            <p>
+                Para agregar Usuarios completá todos los campos del formulario AGREGAR USUARIO, y por último hacés click en Agregar. Solo los Usuarios Administradores pueden cargar usuarios de tipo Administrador.
+            </p>
+            <p>
+                Para editar los datos del usuario hacés click en el botón Editar de cada usuario, la información se cargará en el formulario de AGREGAR USUARIO. Luego de hacer los cambios, confirmás la edición haciendo click en el botón  Actualizar.
+            </p>
+            <p>
+                Solo los usuarios Administradores: pueden eliminar Usuario. Hacés click en la X de cada usuario. 
+            </p>
+                </div>
+                <div class="tarjeta-help">
+                    <h4>TABLEROS:</h4>
+                    <p>
+                        En la pantalla TABLEROS verás y cargarás las tareas del equipo. Estas tareas se agrupan en tres columnas, el concepto de esta disposición es facilitarte gráficamente el progreso de tus actividades y las de tu equipo. Separándolas en tres estados bien marcados: las pendientes, las que estás o están realizando y las que han concluido. Podés editar los nombres de los estados si quisieras. También podés asignar un color al tablero y de ese modo diferenciarlo de otros tableros que tengas cargado. 
+                    </p>
+                    <br>
+                    <h4 >TABLEROS: Como Agregar, Editar/Actualizar y Eliminar.</h4>
+            <p>
+                Para agregar un tablero completá los campos del formulario Agregar Tablero y dás click en el botón Agregar. El tablero se cargará en tu espacio de trabajo. 
+            </p>
+            <p>
+                Para editar el nombre y el color del tablero hacés click en el botón Editar. Los datos se cargarán en el formulario de tableros. Luego de hacer los cambios, confirmás la edición haciendo click en el botón Actualizar.
+            </p>
+            <p>
+                Para eliminar un tablero hacés click en la X ubicado al lado del nombre del tablero. Todas las tareas que estén cargadas en el tablero también se eliminarán.
+            </p>
+                </div>
+                <div class="tarjeta-help">
+                    <h4>TAREAS:</h4>
+                    <p>
+                       Son las actividades que realiza cada integrante. Cargas una a una. Por defecto se cargarán en la columna de la izquierda. Cada tarea estará identificada por su prioridad y el o la responsable de la misma, en el espacio de descripción podés escribir la cantidad de caracteres que quieras, te recomendamos que uses frases cortas que te permitan concentrar lo esencial de la actividad. La tarea se pintará del color que represente al usuario. Si la tarea cambia de manos también cambiará de color. Para cambiar el estado de la tarea simplemente la moves al que le corresponda. Podés hacer todos los movimientos que desees
+                    </p>
+                    <br>
+                    <h4>
+                        TAREAS: Como Agregar, Editar/Actualizar y Eliminar.
+                    </h4>
+                    <p>
+                        Para agregar tareas primero seleccioná un tablero (para seleccionar un tablero hacés click sobre el nombre del tablero). Luego completás todos los campos del formulario AGREGAR TAREA, y por último hacés click en Agregar.
+                    </p>
+                    <p>
+                        Para editar tareas hacés click en el botón Editar de cada tarea, la información de la tarea se cargará en el formulario de tareas. Luego de hacer los cambios, confirmás la edición haciendo click en el botón Actualizar.
+                    </p>
+                    <p>
+                        Para eliminar una tarea hacés click en la X de cada tarea.     
+                    </p>
+                </div>
+           
+                    <div class = 'video-Lilo'>        
+                        <div>
+                            <p>Acá te dejamos un video en donde podes ver en acción el funcionamiento de Lilo. </p> 
+                        </div>
+                        <br>
+                            <div class="video-Lilo-video">
+                                <iframe width="420" height="315" src="https://www.youtube.com/watch?v=nvzFxi_qVbg"  allowfullscreen>
+                                </iframe>
+                            </div>
+                        
+                    </div>
+    </div> 
+        <section class="social">
+        <div class="links">
+            <a href="https://www.facebook.com">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+        </section>
+    
+        <dialog class="modal info" id="modal-generico">
+            <div  class= 'modal-contenido' id="modal-generico-contenido">    
+            </div>
+        </dialog>
+    </div>
+</div>
+    <script src="JS/app.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

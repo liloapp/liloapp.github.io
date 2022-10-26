@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
+        <script src="https://kit.fontawesome.com/75ae08cc6f.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+        <!-- ico en el pestaña del navegador -->
+        <link rel="shortcut icon" href="IMG/img-presto-logo-nav-trans.ico" type="image/x-icon"/> 
+        <!-- css local -->  
+        <link rel="stylesheet" href="CSS/styles.css"> 
+    <title>LILO</title>
+    </head>
+
+<body>
+    
+    <div class="container-config">
+        <nav class="nav-main">
+            <img src="IMG/img-presto-logo-nav.png" alt="todo" class="nav-brand">
+            <ul class="nav-menu">
+                <li>
+                    <a href="index-users.html">USUARIOS</a> 
+                </li>  
+                <!-- <li id="btn-abrir-modal-calendario">CALENDARIO</li> -->
+                <li>
+                    <a href="index-tableros.html">TABLEROS</a>
+                </li> 
+                <li>
+                    <a href="index-help.html">AYUDA</a>
+                </li>
+                
+                <li id="btn-abrir-modal-gracias" >AGRADECIMIENTOS
+                </li>               
+            </ul>
+            <ul>
+                <li >
+                   <a id="userSesion" onclick="abrilModal()" >Nombre Usuario</a> 
+                </li>    
+            </ul>
+            <div class="menu-btn"> <!-- icono para el menu 3 lineas -->
+                <i class="fas fa-bars fa-2x"></i>
+            </div>
+        </nav>
+        <!-- acaestaba calendario -->
+        <dialog class="modal info" id="modal-generico">
+            <div id="modal-generico-contenido">    
+            </div>
+         </dialog>
+     
+        <div class="showcase-config">
+            <div class="left">
+                <H2 class="board-text">PANEL DE CONFIGURACIÓN</H2>
+            </div>
+            <div>
+                <h3>Guía Rápida</h3>
+                <p>Es para Agregar: <i class="fa-solid fa-plus fa-2x"></i> 
+                 || Es para Editar: <i class="fa-solid fa-pen-to-square fa-2x"></i> 
+                 || Es para Actualizar:   <i class="fa-solid fa-pen fa-2x"></i> 
+                 || Es para Eliminar: <i class="fa-solid fa-xmark fa-2x"></i>
+                 || Es para Agregar Usuario: <i class="fa-solid fa-user-plus fa-2x"></i>
+             </p>
+             </div>
+            
+            <div>
+                <div>
+                    <p>Acá va las opciones que los usuarios puede configurar. todavia no se cuales puede ser. </p>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                <p>Podés ordenar las tareas por:</p>
+                </div>
+                <div>
+                <select name="ordenTareas" id="ordenTareas">
+                    <option value="PRIORIDAD">PRIORIDAD</option>
+                    <OPtion value="MIEMBROS">MIEMBROS</OPtion>
+                    <OPtion value="OTRAS">OTRAS</OPtion>
+                </select>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div>
+                    <p>Podés Elegir un grupo de colores para tus tableros y tus tareas:</p>
+                </div>
+                <div>
+                    <div>
+                    <img src="IMG/theme-ey.png" alt="ey">
+                    </div>
+                    <div>
+                    <img src="IMG/theme-fire.png" alt="ey">
+                    </div>
+                    <div>
+                    <img src="IMG/theme-indianflag.png" alt="ey">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div>
+                    <p>Acá va otra opcion que el usuario podria configurar</p>
+                </div>
+                <div>
+                    <select name="ordenTareas" id="ordenTareas">
+                        <option value="op1">Op1</option>
+                        <OPtion value="op2">Op2</OPtion>
+                        <OPtion value="op3">Op3</OPtion>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <div>
+                <p>Acá va otra opcion que el usuario podria configurar</p>
+                </div>
+                <div>
+                <select name="ordenTareas" id="ordenTareas">
+                    <option value="op1">Op1</option>
+                    <OPtion value="op2">Op2</OPtion>
+                    <OPtion value="op3">Op3</OPtion>
+                </select>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        </div>
+        <section class="social">
+        <div class="links">
+            <a href="https://www.facebook.com">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+        </section>
+        
+    </div>
+    <script src="JS/app.js"></script>
+</body>
+
+</html>
