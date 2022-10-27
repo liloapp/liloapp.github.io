@@ -8,7 +8,7 @@
         <!-- Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">    
         <script src="https://kit.fontawesome.com/75ae08cc6f.js" crossorigin="anonymous"></script>
@@ -23,8 +23,11 @@
 
 
 <body>
-   
-    <div class="container-tableros">
+    <div class="menu-btn"> <!-- icono para el menu 3 lineas -->
+        <i class="fas fa-bars fa-2x"></i>
+    </div>
+
+    <div class="container">
         <nav class="nav-main">
             <img src="IMG/img-presto-logo-nav.png" alt="todo" class="nav-brand">
             <ul class="nav-menu">
@@ -37,72 +40,76 @@
                 <li id="btn-abrir-modal-gracias"><i class="fa-solid fa-laptop-code fa-2x"></i>
                 </li>               
             </ul>
-            <ul>
+            <ul class="nav-menu-right">
                 <li >
                    <a id="userSesion" onclick="abrilModalPerfil()" ></a> 
                 </li>    
             </ul>
-              <div class="menu-btn"> <!-- icono para el menu 3 lineas -->
-                <i class="fas fa-bars fa-2x"></i>
-            </div>
         </nav>
                     
-        <div class="showcase">
-            <div class="nombre-Panel">
-                    <div class="title">
-                        <h3><a onclick="abrilModalPanelUsuarios()">PANEL DE USUARIOS</a></h3>
-                    </div>
-                    
+        
+        <div class="panel-herramientas">
+            <div class="title-panel">
+                <h3><a onclick="abrilModalPanelUsuarios()">PANEL USUARIOS</a></h3>
             </div>
-            <div class="herramientas-forms">
-                <form action=""  class="agregarUser-form" id="frmUsers">
-                    <div class="form-gruop">
-                        <label class="label" class ="nuevatarea-titulo" >FORMULARIO USUARIO</label>
-                    </div>
-
-                    <div class="form-contenidoUser">
+            <div class="forms">
+                <form action=""  class="form-user" id="frmUsers">
+                    <div class="form-titulo-user">
                         <div class="form-gruop">
+                            <label class="label" class ="nuevatarea-titulo" >FORMULARIO USUARIO</label>
+                        </div>
+                    </div>
+                    <div class="form-contenido-user">
+                        <div class="form-gruop">
+                            <label for="formUserNewNombre"><i class="fa-regular fa-user"></i></label>
                             <input type="text" placeholder="Nombre del Usuario" name="formUserNewNombre" autocomplete="off">
                         </div>
                         <div class="form-gruop">
+                            <label for=""><i class="fa-solid fa-user"></i></label>
                             <input type="text" placeholder="Apellido del Usuario" name="formUserNewApellido" autocomplete="off">
                         </div>
                         <div class="form-gruop">
+                            <label for="formUserNewEmail"><i class="fa-solid fa-envelope"></i></label>
                             <input type="email" placeholder="Email del Usuario" name="formUserNewEmail" autocomplete="off">
                         </div>
                         <div class="form-gruop">
+                            <label for="formUserNewTelefono"><i class="fa-solid fa-phone"></i></label>
                             <input type="text" placeholder="Teléfono del Usuario" name="formUserNewTelefono" autocomplete="off">
                         </div>
                         <div class="form-gruop">
+                            <label for="formUserNewColor"><i class="fa-solid fa-droplet"></i></label>
                             <input type="color" name="formUserNewColor" value="#77aaff"  autocomplete="off">
                         </div>
                         <div class="form-gruop">
+                            <label for="formUserNewTipoUsuario"><i class="fa-solid fa-users-gear"></i></label>
                                 <select id = "formTipoUsuario" name="formUserNewTipoUsuario" autocomplete="off">
                                     <option  value="ADMINISTRADXR">ADMINISTRADXR</option>
                                     <option selected value="MIEMBRX">MIEMBRX</option>
                                 </select>
                         </div>
-                    </div> 
+                    </div>
+                    <div class="form-footer">
                         <div class="form-gruop">
                             <button id="btnAddUser" type="button" class="button is-danger" >
                                 <i class="fa-solid fa-user-plus fa-2x"></i>
                             </button>
                         </div>     
-                         
-                </form> 
-                <div class="importarUsers">
-                    <button type="button" id="importarUsuarios">IMPORTAR USUARIOS DE UNA API</button>
-                    <button type="button" onclick="avisarEliminarUsuarios()">ELIMINAR USUARIOS DE UNA API</button>
-                </div>
+                    </div>
+                </form>
             </div>
-<hr>
-     <div class ='listaUsers' id="listaUsers">
-
-        <!-- acá va la lista de usuarios-->
-    </div>
-
+            <div class="importarUsers">
+                <button type="button" id="importarUsuarios">IMPORTAR USUARIOS DE UNA API</button>
+                <button type="button" onclick="avisarEliminarUsuarios()">ELIMINAR USUARIOS DE UNA API</button>
+            </div>
         </div>
-        <section class="social">
+    <hr>
+        <div class="showcase">
+            <div class ='listaUsers' id="listaUsers">
+
+                <!-- acá va la lista de usuarios-->
+            </div>
+        </div>
+        <section class="footer">
         <div class="links">
             <a href="https://www.facebook.com">
                 <i class="fab fa-facebook-f"></i>

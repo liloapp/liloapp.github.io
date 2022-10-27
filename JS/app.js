@@ -119,8 +119,6 @@ const button = document.getElementById("entrar")
     }
 
 try{ 
-    
-  
 
     var formCrearUser = document.getElementsByName("formCrearUser")
     var buttonCrearUser = document.getElementById("crear")
@@ -285,7 +283,7 @@ function addTablero(){
 
         formAgregarTablero.reset()
         //manda al formulario agregar tareas/nombre de tableros, el nombre nuevo del tablero que se acaba de editar
-        document.querySelector('#formTareaNombreTablero').textContent = nombreTablero
+        document.querySelector('#formTareaNombreTablero').value = nombreTablero
         
         btnFormAgregarTablero.textContent = "Agregar"
         clickTabs()
@@ -341,7 +339,7 @@ function addTablero(){
 
          // En el formulario de tareas agrego el titulo del tablero recien creado al div titulo de tablero
          console.log(dataTableroNuevo.titulo)
-         document.querySelector('#formTareaNombreTablero').textContent = dataTableroNuevo.titulo
+         document.querySelector('#formTareaNombreTablero').value = dataTableroNuevo.titulo
 
          var obtParaLocalStorage = document.getElementById("tableros").innerHTML
          var nombreVarLocalStorage = 'tablerosHtml' 
@@ -380,7 +378,7 @@ function addTablero(){
 
         //para obtener el nombre del tablero    
         console.log(tabs[index].textContent)
-        document.querySelector('#formTareaNombreTablero').textContent = tabs[index].textContent
+        document.querySelector('#formTareaNombreTablero').value = tabs[index].textContent
         // console.log(nombreTablero)
 
         var obtParaLocalStorage = document.getElementById("tableros").innerHTML
@@ -420,7 +418,14 @@ function addTablero(){
 
     function eliminarTablero(id){
         console.log(id)
-        document.querySelector("#modal-generico-contenido").innerHTML = `<div><p>¿Estás seguro que querés eliminar este Tablero? recordá que se elminaran las tareas que tengas cargadas en el.</p><button type="button" onclick="siEliminarTablero(${id})">Eliminar</button><button type="button" class= "cerrar-modal-generico"  onclick="noEliminarTablero()">NO</button></div>`
+        document.querySelector("#modal-generico-contenido").innerHTML = `
+        <div class="card">
+        <p>¿Estás seguro que querés eliminar este Tablero? recordá que se elminaran las tareas que tengas cargadas en el.</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" onclick="siEliminarTablero(${id})">Eliminar</button>
+        <button type="button" class= "cerrar-modal-generico"  onclick="noEliminarTablero()">NO</button>
+        </div>`
         document.querySelector("#modal-generico").showModal()
         
     }
@@ -443,7 +448,7 @@ function addTablero(){
             tabs = document.querySelectorAll('.tabs_toggle'),
             contents = document.querySelectorAll('.tabs_content');
 
-            document.querySelector('#formTareaNombreTablero').textContent = ''
+            document.querySelector('#formTareaNombreTablero').value = ''
             formAgregarTablero.reset()
     }
 
@@ -516,7 +521,7 @@ try{
 
     function addTarea() {
 
-        const $divElements = document.getElementById("list1-"+formTareaNombreTablero.textContent)
+        const $divElements = document.getElementById("list1-"+formTareaNombreTablero.value)
         if(formTareaUsuario.value === '' && formTareaDescripcion.value.trim() === ''){ 
             alert("Para agregar una Tarea tenés que completar todos los campos")
         }else if($divElements === null){
@@ -527,7 +532,7 @@ try{
             objTareaNueva.id = Date.now()
             objTareaNueva.user = formTareaUsuario.value
             objTareaNueva.prioridad = formTareaTipoPrioridad.value
-            objTareaNueva.tablero = formTareaNombreTablero.textContent
+            objTareaNueva.tablero = formTareaNombreTablero.value
             objTareaNueva.descripcion = formTareaDescripcion.value
             objTareaNueva.titulo = 'sin titulo'
             objTareaNueva.estado = 'QUE'
@@ -598,13 +603,13 @@ console.log('no se cargaron eventos del formulario de tareas nuevas' + error)
 
     function removeElement(event) {
     
-        document.querySelector("#modal-generico").innerHTML = 
-        `<div>
+        document.querySelector("#modal-generico-contenido").innerHTML = 
+        `<div class="card2">
         <p>¿Estás seguro que querés eliminar la tarea?</p>
+        </div>
         <div class="modal-footer">
         <button type="button" id="siEliminar">Eliminar</button>
-    <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">Cerrar</button>
-</div>
+        <button type="button" class=""  onclick="noEliminar()">Cerrar</button>
         </div>`
         document.querySelector("#modal-generico").showModal()
         document.querySelector("#siEliminar").addEventListener('click',()=>{
@@ -1098,16 +1103,6 @@ const modalQueEs = `<div class="card">
 <p>Lilo facilita el seguimiento de las tareas que realizan un equipo de trabajo.</p>
 <p>Está basado en el método de Kanban, en donde las tareas se agrupan en tres grandes estados: Que hacer, Haciendo y Hecho; permitiendo al equipo visualizar gráficamente el flujo de trabajo de un proyecto, viendo cuales son las tareas pendientes, las que se están realizando y las que ya han sido concluidas; el sistema busca optimizar el rendimiento del tu tiempo y el de tu equipo.</p>
 </div>
-<div class="video-Lilo">
-<div>
-<p>Acá te dejamos un video video para vas a Lilo en acción. </p>
-</div>
-<div class="video-Lilo-video">
-<video controls>
-    <source src="IMG/como-agregar-mover-tareas.mov">
-</video>
-</div>
-</div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">Cerrar</button>
 </div>
@@ -1128,6 +1123,8 @@ modalPanleUsuarios = `<div><p> Estás en el panel de usuarios. Acá podés carga
     <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
 </div>
 </div>`
+
+
 
 function abrilModalPanelUsuarios(){ 
     modalGenericoContenido.innerHTML =   modalPanleUsuarios
@@ -1200,10 +1197,14 @@ try{
     const ventanaGracias = ` <div class="card">
     <h4>GRACIAS!!</h4>
     <p>
-    Este site fue contruido gracias al aporte de los siguientes canales y personas que comparten su conocimiento 
+    Este site fue contruido gracias al aporte de los siguientes canales y personas que comparten sus conocimientos. 
     </p>
+
     </div>
     <div class="link-canales">
+    <div>
+    <a href="https://www.buenosaires.gob.ar/educacion/codocodo/el-programa" target="_blank" >Codo a codo 4.0</a>
+    </div>
     <div>
     <a href="https://www.youtube.com/c/AsperosGeek" target="_blank" >Asperos Geek</a>
     </div>
@@ -1273,116 +1274,108 @@ try{
     console.log("esto se deberia cargr en html tablero / usuarios / configuracion / ayuda")
 }
 
+function lilo(){ 
+    modalGenericoContenido.innerHTML =`
+    <div class="tarjeta-help">
+                        <h4>LILO</h4>
+                        <p>
+                            El objetivo de Lilo es facilitar el seguimiento de las tareas que realizan los miembros de un equipo y dinamizar el flujo de trabajo.
+                        </p>
+                        <p>
+                            El sistema está basado en el método de Kanban, en donde las tareas se agrupan en tres grandes estados: Que hacer, Haciendo, Hecho; permitiendo la visualización gráfica del proceso del proyecto, viendo cuales son las tareas pendientes, las que se están realizándose y las que ya han sido concluidas; el sistema busca optimizar el rendimiento del tiempo.
+                        </p>
+                    </div>
+                    <div class="tarjeta-help">
+                            <h4>COMO FUNCIONA:</h4>
+                        <p>
+                            Luego de crear una cuenta en la web, el usuario será designado como Administrador de la cuenta y podrá hacer todo tipo de movimientos y cambios. Luego deberá cargar el proyecto en el sistema especificamendo usuarios ( que podrán ser miembrxs o Administradores), tableros de trabajo y tareas ha realizar. 
+                        </p>
+                        </div>
+                        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
+    </div>`
+    modalGenerico.showModal()
+}
 
-////////// FETCHH APIS //////
-
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'Accept-Encoding': 'application/gzip',
-// 		'X-RapidAPI-Key': '1924364fc7mshbb7c7d33e7996b9p119422jsnecfa05721058',
-// 		'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
-// 	}
-// };
-
-// fetch('https://google-translate1.p.rapidapi.com/language/translate/v2/languages', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-    
-///////// FIN FETCH API/////
 
 
-//////////////// CALENDARIO - ESTA SIN USO ///////////////////
 
-    // try{
-    //     const date = new Date();
+function usuariosAyuda(){ 
+    modalGenericoContenido.innerHTML = `
+    <div class="tarjeta-help">
+                            <h4>USUARIOS:</h4>
+                        <p>
+                             En la pantalla USUARIOS verás y cargarás todas las personas que quieras, pueden ser miembros, ejecutan tareas relacionadas con el trabajo; o Administradores, puede ser miembros que tienen tareas asignadas y también pueden hacer cambios en tareas de otros miembros. Todos los integrantes que agregues podrán participar de todos los tableros. Por lo cual podría haber miembros que participen en varios tableros. Es importante que asignes colores a cada usuario, te permitirá identificarlos mejor dentro de diferentes espacios de trabajo.
+                        </p>
+                        <br>
+                        <h4>Miembrxs y Administradores</h4>
+                <p>
+                    Para agregar Usuarios completá todos los campos del formulario AGREGAR USUARIO, y por último hacés click en Agregar. Solo los Usuarios Administradores pueden cargar usuarios de tipo Administrador.
+                </p>
+                <p>
+                    Para editar los datos del usuario hacés click en el botón Editar de cada usuario, la información se cargará en el formulario de AGREGAR USUARIO. Luego de hacer los cambios, confirmás la edición haciendo click en el botón  Actualizar.
+                </p>
+                <p>
+                    Solo los usuarios Administradores: pueden eliminar Usuario. Hacés click en la X de cada usuario. 
+                </p>
+                </div>
+                <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
+    </div>`
+    modalGenerico.showModal()
+}
 
-    //     const renderCalendar = () => {
-    //     date.setDate(1);
-        
-    //     const monthDays = document.querySelector(".days");
-        
-    //     const lastDay = new Date(
-    //         date.getFullYear(),
-    //         date.getMonth() + 1,
-    //         0
-    //     ).getDate();
-        
-    //     const prevLastDay = new Date(
-    //         date.getFullYear(),
-    //         date.getMonth(),
-    //         0
-    //     ).getDate();
-        
-    //     const firstDayIndex = date.getDay();
-        
-    //     const lastDayIndex = new Date(
-    //         date.getFullYear(),
-    //         date.getMonth() + 1,
-    //         0
-    //     ).getDay();
-        
-    //     const nextDays = 7 - lastDayIndex - 1;
-        
-    //     const months = [
-    //         "Enero",
-    //         "Febrero",
-    //         "Marzo",
-    //         "Abril",
-    //         "Mayo",
-    //         "Junio",
-    //         "Julio",
-    //         "Agosto",
-    //         "Septiembre",
-    //         "Octubre",
-    //         "Noviembre",
-    //         "Diciembre",
-    //     ];
-        
-    //     document.querySelector(".date h1").innerHTML = months[date.getMonth()];
-        
-    //     document.querySelector(".date p").innerHTML = new Date().toDateString();
-        
-    //     let days = "";
-        
-    //     for (let x = firstDayIndex; x > 0; x--) {
-    //         days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
-    //     }
-        
-    //     for (let i = 1; i <= lastDay; i++) {
-    //         if (
-    //         i === new Date().getDate() &&
-    //         date.getMonth() === new Date().getMonth()
-    //         ) {
-    //         days += `<div class="today">${i}</div>`;
-    //         } else {
-    //         days += `<div>${i}</div>`;
-    //         }
-    //     }
-        
-    //     for (let j = 1; j <= nextDays; j++) {
-    //         days += `<div class="next-date">${j}</div>`;
-    //         monthDays.innerHTML = days;
-    //     }
-    //     };
-        
-    //     document.querySelector(".prev").addEventListener("click", () => {
-    //     date.setMonth(date.getMonth() - 1);
-    //     renderCalendar();
-    //     });
-        
-    //     document.querySelector(".next").addEventListener("click", () => {
-    //     date.setMonth(date.getMonth() + 1);
-    //     renderCalendar();
-    //     });
-        
-    //     renderCalendar();
+function tablerosAyuda(){ 
+    modalGenericoContenido.innerHTML = `
+    <div class="tarjeta-help">
+                        <h4>TABLEROS:</h4>
+                        <p>
+                            En la pantalla TABLEROS verás y cargarás las tareas del equipo. Estas tareas se agrupan en tres columnas, el concepto de esta disposición es facilitarte gráficamente el progreso de tus actividades y las de tu equipo. Separándolas en tres estados bien marcados: las pendientes, las que estás o están realizando y las que han concluido. Podés editar los nombres de los estados si quisieras. También podés asignar un color al tablero y de ese modo diferenciarlo de otros tableros que tengas cargado. 
+                        </p>
+                        <br>
+                        <h4>Como Agregar, Editar/Actualizar y Eliminar.</h4>
+                <p>
+                    Para agregar un tablero completá los campos del formulario Agregar Tablero y dás click en el botón Agregar. El tablero se cargará en tu espacio de trabajo. 
+                </p>
+                <p>
+                    Para editar el nombre y el color del tablero hacés click en el botón Editar. Los datos se cargarán en el formulario de tableros. Luego de hacer los cambios, confirmás la edición haciendo click en el botón Actualizar.
+                </p>
+                <p>
+                    Para eliminar un tablero hacés click en la X ubicado al lado del nombre del tablero. Todas las tareas que estén cargadas en el tablero también se eliminarán.
+                </p>
+                    </div>
+                    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
+    </div>
+    `
+    modalGenerico.showModal()
+}
 
-    //     } catch (error){
-    //     console.log('No e cargó el calendario')
-    // }
-/////////// FIN  CALENDARIO///////////////////
+function tareasAyuda(){ 
+    modalGenericoContenido.innerHTML =`
+    <div class="tarjeta-help">
+                        <h4>TAREAS:</h4>
+                        <p>
+                           Son las actividades que realiza cada integrante. Cargas una a una. Por defecto se cargarán en la columna de la izquierda. Cada tarea estará identificada por su prioridad y el o la responsable de la misma, en el espacio de descripción podés escribir la cantidad de caracteres que quieras, te recomendamos que uses frases cortas que te permitan concentrar lo esencial de la actividad. La tarea se pintará del color que represente al usuario. Si la tarea cambia de manos también cambiará de color. Para cambiar el estado de la tarea simplemente la moves al que le corresponda. Podés hacer todos los movimientos que desees
+                        </p>
+                        <br>
+                        <h4>
+                            Como Agregar, Editar/Actualizar y Eliminar.
+                        </h4>
+                        <p>
+                            Para agregar tareas primero seleccioná un tablero (para seleccionar un tablero hacés click sobre el nombre del tablero). Luego completás todos los campos del formulario AGREGAR TAREA, y por último hacés click en Agregar.
+                        </p>
+                        <p>
+                            Para editar tareas hacés click en el botón Editar de cada tarea, la información de la tarea se cargará en el formulario de tareas. Luego de hacer los cambios, confirmás la edición haciendo click en el botón Actualizar.
+                        </p>
+                        <p>
+                            Para eliminar una tarea hacés click en la X de cada tarea.     
+                        </p>
+                        </div>
+                        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
+    </div>`
+    modalGenerico.showModal()
+}
 
-/////////////////////////RESTOS DE CODIGO QUE NO SE USA////////////////////////
 
