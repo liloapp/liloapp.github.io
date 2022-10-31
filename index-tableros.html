@@ -22,9 +22,8 @@
 
 <body>
     <div class="menu-btn"> <!-- icono para el menu 3 lineas -->
-        <i  id='salir' class="fas fa-bars fa-2x"></i>
+        <i id='salir' class="fas fa-bars fa-2x"></i>
     </div>
-
     <div class="container">
         <nav class="nav-main">
             <img src="IMG/img-presto-logo-nav.png"  alt="todo" class="nav-brand">
@@ -36,8 +35,15 @@
                         <a href="index-help.html"><i class="fa-solid fa-circle-info fa-2x"></i></a>
                     </li> <!-- id="btn-abrir-modal-ayuda" -->
                     <li id="btn-abrir-modal-gracias"><i class="fa-solid fa-laptop-code fa-2x"></i>
-                    </li>               
+                    </li>
                 </ul>
+                <ul  class="menu-btn-forms">
+                    <li class="menu-btn-forms-tableros"> 
+                        <i id="btn-abrir-modal-formTableros" class="fa-solid fa-folder fa-2x"></i></li>
+                    <li class="menu-btn-forms-tareas">
+                        <i id="btn-abrir-modal-formTareas" class="fa-solid fa-file fa-2x"></i> 
+                    </li>
+                </ul> 
                 <ul class="nav-menu-right">
                     <li >
                     <a id="userSesion" onclick="abrilModalPerfil()" ></a> 
@@ -67,14 +73,15 @@
                                     <label for="formTableroColor"><i class="fa-solid fa-droplet"></i></label>
                                     <input type="color" id="formTableroColor"  value= '#77aaff' name="formTableroColor">
                                 </div> <!--fin class="form-group" -->
+                                <div class="form-footer">
+                                    <div class="form-group">
+                                        <button type="button" onclick="addTablero()" class="button is-danger">
+                                        <i class="fa-solid fa-plus fa-2x"></i> 
+                                            </button>
+                                    </div> <!--fin class="form-group" -->
+                                </div>
                             </div>
-                            <div class="form-footer">
-                                <div class="form-group">
-                                    <button type="button" onclick="addTablero()" class="button is-danger">
-                                    <i class="fa-solid fa-plus fa-2x"></i> 
-                                        </button>
-                                </div> <!--fin class="form-group" -->
-                            </div>
+                            
                         </form> <!--fin id="formAgregarTablero" -->
 
                         <form action=""  class="form-tareas" id="formAgregarTarea">
@@ -106,14 +113,15 @@
                                     <label for="formTareaDescripcion"><i class="fa-solid fa-thumbtack"></i></label>
                                     <input type="text" id="formTareaDescripcion" size="40"  placeholder="Describe la tarea" name="formTareaDescripcion">
                                 </div> <!--fin class="form-group" -->
-                            </div>
                                 <div class="form-footer">
-                                    <div class="form-group">
+                                 <div class="form-group">
                                         <button type="button" onclick="addTarea()" class="button is-danger" >
                                         <i class="fa-solid fa-plus fa-2x"></i> 
                                         </button>
                                     </div> <!--fin class="form-group" -->
                                 </div>
+                            </div>
+                               
                         </form> <!--fin id="formAgregarTarea" -->
                     </div> <!--fin class="herramientas-forms" -->
         </div> <!-- fin class="panel-herramientas" --> 

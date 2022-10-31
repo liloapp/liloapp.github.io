@@ -25,7 +25,7 @@ body {
 }
 
 .container { /*se usa para todas las paginas */
-    width: 85%;
+    width: 915px;
     margin: auto;
     /* border:  0.1rem solid ; */
 }
@@ -112,6 +112,7 @@ body {
     top: 0;
 }
 
+
 .nav-brand {
     /* border:  0.1rem solid ; */
     width: 80px;
@@ -134,15 +135,50 @@ body {
     margin-left: 20px;
 }
 
-.menu-btn {
+.menu-btn{
     position: absolute;
     cursor: pointer;
     top: 15px;
-    right: 50px;
+    right: 20px;
     z-index: 2;
     display: none;
-
 }
+
+.nav-main .menu-btn-forms {
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    right: 200px;
+    z-index: 2;
+    margin-right: 20px;
+    display: none;
+}
+
+
+
+    /* .nav-main .menu-btn-forms {
+        position: absolute;
+        align-items: center;
+        cursor: pointer;
+        right: 200px;
+        z-index: 2;
+        margin-right: 20px;
+        display: block;
+    } */
+
+
+
+
+.nav-main .nav-menu-users{
+
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    right: 200px;
+    z-index: 2;
+    display: none;
+}
+
 
 /* .nav-menu-right{
     border: 00.1rem solid; 
@@ -168,25 +204,33 @@ body {
     /* border: 00.1rem solid; */
     display: flex;
     flex-direction: column;
+    /* justify-content: 0.5fr 1fr; */
 }
 
 .form-tableros{
     display: flex;
-   
-    align-items: center;
-    justify-content: space-evenly;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: space-between; */
     background:  #77aaff;
     border-radius: 5px; 
     padding:5px;
+    width: 50%;
 }
 
 .form-tareas {
     display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+   /* grid-column: 1; */
+    /* grid-template-rows: 0.5fr 1fr 0.5fr; */
+
+    /* display: flex;
+    align-items: center; */
+    /* justify-content: space-evenly; */
     background: #e05e41;
     border-radius: 5px; 
     padding:5px;
-    justify-content: space-evenly;
-    align-items: center;
 }
 
 .form-titulo{
@@ -203,31 +247,33 @@ font-weight: bold;
 
 .form-contenido {
     /* border: 00.1rem solid; */
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    /* flex-direction: row;
+    */
+    align-items: center;
+    /* align-items: center; */
+    justify-content: space-between;
+    /* grid-template-columns: repeat(2, 1fr); */
 }
 
 .form-footer{
     /* border: 00.1rem solid; */
-    
+    padding:5px; 
+    /* align-items: flex-start; */
 }
-
 
 .form-group{
-    margin: 5px;
+    margin: 3px;
+    /* font-size: 20px; */
 }
-
-.form-group i{
-    font-size: 20px;
-}
-
 
 input, select, button{
     border: 0;
-    outline: none;
-    padding: 5px;
-    margin: 0px 10px  ;
-    border-radius: 5px 5px;
+    /* outline: none; */
+    padding: 3px;
+    gap: 3px;
+    margin: 3px 3px  ;
+    border-radius: 5px;
 }
 
 
@@ -349,13 +395,6 @@ LO DE ABAJOI ES ANTIGUO
     width:auto ;
     height: max-content;
     }
-
-
-.panel-herramientas{
-    position: sticky;
-    top: 0;
-}
-
 
 
 /* MODAL //////////////////*/
@@ -572,9 +611,25 @@ opacity: 0;
 }
 
 
-/* MEDIA QUERY - PUNTO DE CORTES.  */
+/* MEDIA QUERY - PUNTO DE CORTES.  //////////////////////////////////////////////////////////////////////// */
 
-@media all and (max-width: 850px){
+@media all and (max-width: 900px){
+
+    .container { /*se usa para todas las paginas */
+        width: 100%;
+        /* border:  0.1rem solid ; */
+    }
+
+.form-contenido { 
+   
+    align-items:flex-start;
+}
+
+}
+
+
+
+@media all and (max-width: 800px){
 
     .bienvenida-lilo{ /* en index hay solo dos box, bienvenida-lilo y login  */
         flex-direction: column;
@@ -584,28 +639,40 @@ opacity: 0;
         width:  400px;
     }
 
+
+    /* .panel-herramientas{
+        position: sticky;
+        top: 0;
+    } */
+
     .title-panel h3{
         font-size: 20px;
     }
 
 .forms {
+    /* display: grid; */
+    
+    /* grid-template-rows: 00.5fr 1fr ; */
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
-.form-tableros , .form-tareas {
+.form-tableros{
     width: 100%;
-    flex-direction: column;
 }
 
 .form-contenido{
-   width: 100%;
-    grid-template-columns: 1fr;
+    flex-direction: column;
 }
+
 
 .listaUsers { 
     grid-template-columns: repeat(2,1fr);
 }
+
+/* .form-titulo{
+    display: none;
+} */
 
 .form-titulo-user{
 display: none;
@@ -616,19 +683,28 @@ display: none;
 
 @media (max-width: 600px){
 
-
-    .forms{
-        flex-direction: column;
-    }
-
+/* 
     .form-tableros , .form-tareas {
         width: 100%;
         flex-direction: row;
     }
-
-    .form-titulo{
+    */
+    /* .forms{
+        display: none;
+    } */
+/* 
+    .form-contenido{
+        width: 100%;
+        grid-template-columns: 1fr;
+    } */
+    
+    /* .form-tableros{
         display: none;
     }
+
+    .form-tareas{
+        display: none;
+    } */
 
     .container-bienvenida-lilo img{
         width:  300px;
@@ -645,9 +721,8 @@ display: none;
     .form-user{
         display: flex;
         flex-direction: column;
-    
-    
     }
+
     .tabs_content.is-active {
        grid-template-columns: repeat(1,1fr);
     }
@@ -657,12 +732,23 @@ display: none;
     }
 
     .nav-main ul.nav-menu-right{
-        margin-right: 40px;
+        margin-right: 20px;
     }
     
     .menu-btn {
-        margin-right: 20px;
+        /* margin-right: 20px; */
         display: block;
+        
+    }
+
+    .nav-main .menu-btn-forms {
+
+        display: flex;
+    } 
+    
+    .nav-main .nav-menu-users{
+        display: block;
+    
     }
 
     .nav-main ul.nav-menu {
@@ -671,7 +757,8 @@ display: none;
         top: 0;
         left: 0;
         background: #f1c232;
-        height: 100%;
+        height: auto;
+        border-radius: 3px;
         padding: 30px;
         opacity: .9;
         transform: translateX(-400px);
@@ -680,6 +767,53 @@ display: none;
     }
     .nav-main ul.nav-menu.show {
         transform: translateX(-20px);
+    }
+
+    .form-tableros {
+        display: block;
+        position: absolute;
+        height: auto;
+        border-radius: 3px;
+        padding: 30px;
+        opacity: .9;
+        transform: translateY(-400px);
+        transition: transform .5s ease-in-out;
+
+    }
+
+    .form-tableros.show {
+        transform: translateY(60px);
+    }
+
+    .form-tareas {
+        display: block;
+        position: absolute;
+        height: auto;
+        border-radius: 3px;
+        padding: 30px;
+        opacity: .9;
+        transform: translateY(-400px);
+        transition: transform .5s ease-in-out;
+
+    }
+
+    .form-tareas.show {
+        transform: translateY(60px);
+    }
+
+    .form-user{
+        display: block;
+        position: absolute;
+        height: auto;
+        border-radius: 3px;
+        padding: 30px;
+        opacity: .9;
+        transform: translateY(-400px);
+        transition: transform .5s ease-in-out;
+    }
+
+    .form-user.show{
+        transform: translateY(60px);
     }
 
     .form-contenido-user{
@@ -699,8 +833,18 @@ display: none;
     }
 }
 
+.nav-main, .showcase, .footer{
+    flex-grow: 1; /*Le asignamos un 1 para que abarque el 100% */
+    flex-basis: 100%; /*Tamaño inicial que va a tener nuestro contenedor hijo, le damos el 100% para que en celular abarque el 100% 
+    padding: 10px;
+
+}
+
 
 /*
+
+
+
 .nav-main, .izquierda, .center,.derecha, .footer {
     flex-grow: 1; /*Le asignamos un 1 para que abarque el 100%
     flex-basis: 100%; /*Tamaño inicial que va a tener nuestro contenedor hijo, le damos el 100% para que en celular abarque el 100% 
