@@ -594,16 +594,16 @@ const formTareaDescripcion = document.getElementById("formTareaDescripcion")
 const $btnAdd = document.getElementById("btnAddTarea")
 
 
-let tableroRepetido = false
+// let tableroRepetido = false
 
 function addTablero(){ //cuando se acciona boton agregar o editar tablero
 
-         //chequear que no haya dos tableros del mismo nombre. 
-         tablerosGuardados.map ( tablero => {
-            if(tablero.titulo === formTableroNombre.value.toUpperCase()){   
-                tableroRepetido = true 
-            }
-        })
+        //  //chequear que no haya dos tableros del mismo nombre. 
+        //  tablerosGuardados.map ( tablero => {
+        //     if(tablero.titulo === formTableroNombre.value.toUpperCase()){   
+        //         tableroRepetido = true 
+        //     }
+        // })
 
     if(formTableroNombre.value === ''){
         modalTableroNombrar = `<div class ="card2" ><p>No te olvides de ponerle un nombre al Tablero Nuevo!.</p>
@@ -615,17 +615,17 @@ function addTablero(){ //cuando se acciona boton agregar o editar tablero
             modalGenerico.showModal()
         return  
 
-    }else if(tableroRepetido){
+    // }else if(tableroRepetido){
 
-        modalTableroAgregado = `<div class ="card2" ><p> Ya existe un Tablero con ese nombre.</p>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
-        </div>
-        </div>`
-        modalGenericoContenido.innerHTML =   modalTableroAgregado
-        modalGenerico.showModal()
+    //     modalTableroAgregado = `<div class ="card2" ><p> Ya existe un Tablero con ese nombre.</p>
+    //     <div class="modal-footer">
+    //     <button type="button" class="btn btn-secondary"  onclick = "noEliminar()">cerrar</button>
+    //     </div>
+    //     </div>`
+    //     modalGenericoContenido.innerHTML =   modalTableroAgregado
+    //     modalGenerico.showModal()
 
-        tableroRepetido = false
+    //     tableroRepetido = false
 
     }else if(editandoTableros){
         editarTablero()
@@ -645,6 +645,7 @@ function addTablero(){ //cuando se acciona boton agregar o editar tablero
         // clickTabs()
 
         editandoTableros = false
+        // tableroRepetido = false
     }else{
        
 
@@ -779,13 +780,13 @@ function  mostrarTableros(){
          elementNewTabsBody.id = 'c-'+id
 
          var tableroVacio = `
-         <div id='list1-${titulo}' class="board-list" > 
+         <div id='list1-${id}' class="board-list" > 
          <div class="list-title">QUE HACER</div>
          </div>
-         <div id='list2-${titulo}' class="board-list">  
+         <div id='list2-${id}' class="board-list">  
          <div class="list-title">HACIENDO</div> 
          </div>
-         <div id='list3-${titulo}' class="board-list"> 
+         <div id='list3-${id}' class="board-list"> 
          <div class="list-title">HECHO</div></div>`
 
          elementNewTabsBody.innerHTML = tableroVacio
@@ -907,7 +908,7 @@ function editarTablero(){
                         lista = tarea.estado.split('-')[0]
 
                         console.log(lista)
-                         tarea.estado =  tarea.estado.split('-')[0]+'-'+dataTableroNuevo.titulo  //objTareaNueva.estado
+                         tarea.estado =  tarea.estado.split('-')[0]+'-'+dataTableroNuevo.id  //objTareaNueva.estado
                     }
                 })
 
@@ -968,9 +969,6 @@ function editarTablero(){
 
         tablerosGuardados = tablerosGuardados.filter(tablero => tablero.id !== id)
 
-
-
-
         modalGenerico.close()
         // console.log(tablero)
         var obtParaLocalStorage = JSON.stringify(tablerosGuardados)
@@ -1015,7 +1013,14 @@ function editarTablero(){
 
     function addTarea() {
 
-        const $divElements = document.getElementById("list1-"+formTareaNombreTablero.value)
+    console.log(tabIdActivo)
+
+    console.log(tabIdActivo.split('-')[1])
+
+
+    // formTareaNombreTablero.value
+
+        const $divElements = document.getElementById("list1-"+tabIdActivo.split('-')[1])
         if(formTareaUsuario.value === '' && formTareaDescripcion.value.trim() === ''){ 
             alert("Para agregar una Tarea tenés que completar todos los campos")
         }else if($divElements === null){
@@ -1043,7 +1048,7 @@ function editarTablero(){
             objTareaNueva.tablero = formTareaNombreTablero.value
             objTareaNueva.descripcion = formTareaDescripcion.value
             objTareaNueva.titulo = 'sin titulo'
-            objTareaNueva.estado = 'list1-'+formTareaNombreTablero.value
+            objTareaNueva.estado = 'list1-'+tabIdActivo.split('-')[1]
 
             agregarTarea()
 
