@@ -91,6 +91,18 @@ if(localStorage.getItem('tablerosHtml')){
 }
 
 
+if(localStorage.getItem('tabsActive')){
+    tabsActive = JSON.parse(localStorage.getItem('tabsActive'))
+}else{
+    tabsActive = {
+    tabIdActivo: '',
+    contentIdActivo: ''
+    }
+    obtParaLocalStorage = JSON.stringify(tabsActive)
+    nombreVarLocalStorage = 'tabsActive' 
+    actualizarLocalStorage(nombreVarLocalStorage,obtParaLocalStorage) 
+}
+
 
 if(localStorage.getItem('tablerosObj')){
     tablerosGuardados = JSON.parse(localStorage.getItem('tablerosObj'))
@@ -563,7 +575,7 @@ if(document.querySelector('#btn-abrir-modal-formUsers')){
 
 if(document.querySelector('.tabs_head')){
     mostrarTableros()
-    var tabIdActivo, contentIdActivo 
+    // var tabIdActivo, contentIdActivo 
     // clickTabs()    
 }
  
@@ -672,7 +684,7 @@ function addTablero(){ //cuando se acciona boton agregar o editar tablero
             modalGenerico.showModal()
 
         // clickTabs()
-            console.log(tabIdActivo)
+            // console.log(tabIdActivo)
 
         // document.querySelector(tabIdActivo).classList.add('is-active');
         // document.querySelector(contentIdActivo).classList.add('is-active');
@@ -699,17 +711,20 @@ function addTablero(){ //cuando se acciona boton agregar o editar tablero
         });
         contents[index].classList.add('is-active'); 
         tabs[index].classList.add('is-active');
-        var esto = tabs[index].style.background
-        
-        contents[index].style.background = esto
+
+        tabsActive.tabIdActivo = tabs[index].id
+        tabsActive.contentIdActivo =  contents[index].id
+        tabsActive.colorActivo = tabs[index].style.background
+                
+        contents[index].style.background = tabsActive.colorActivo
 
         //para obtener el nombre del tablero    
         // console.log(tabs[index].textContent)
         document.querySelector('#formTareaNombreTablero').value = tabs[index].textContent
-        tabIdActivo = tabs[index].id
-        console.log(tabIdActivo)
-        contentIdActivo =  contents[index].id
-        console.log(contentIdActivo)
+
+        var obtParaLocalStorage = JSON.stringify(tabsActive)
+        var nombreVarLocalStorage = "tabsActive" 
+        actualizarLocalStorage(nombreVarLocalStorage,obtParaLocalStorage)
 
         var obtParaLocalStorage = document.getElementById("tableros").innerHTML
         var nombreVarLocalStorage = 'tablerosHtml' 
@@ -807,7 +822,7 @@ function  mostrarTableros(){
                         colorUser =  usuario.color
                 }
             })
-         
+        
              // console.log($divElements)
              const $div = document.createElement("div")
             
@@ -838,16 +853,22 @@ function  mostrarTableros(){
             if(estado){
                 const $divElements = document.getElementById(estado)
                 $divElements.appendChild($div, $divElements.firstChild) 
-            }
-
-    
-
-             
-    })
-
-  
- 
+            }     
+    }) 
  clickTabs()
+
+
+
+tabsActive = JSON.parse(localStorage.getItem('tabsActive'))
+
+if(tabsActive.tabIdActivo != ''){
+document.getElementById(tabsActive.tabIdActivo).classList.add('is-active'); 
+document.getElementById(tabsActive.contentIdActivo).classList.add('is-active'); 
+
+document.getElementById(tabsActive.contentIdActivo).style.background = tabsActive.colorActivo
+
+}
+       
 
 
 }
@@ -922,6 +943,15 @@ function editarTablero(){
             }
         })
 
+
+
+        tabsActive.colorActivo = dataTableroNuevo.color
+
+        var obtParaLocalStorage = JSON.stringify(tabsActive)
+        var nombreVarLocalStorage = "tabsActive" 
+        actualizarLocalStorage(nombreVarLocalStorage,obtParaLocalStorage)
+
+
         var obtParaLocalStorage = JSON.stringify(tablerosGuardados)
         var nombreVarLocalStorage = "tablerosObj" 
         actualizarLocalStorage(nombreVarLocalStorage,obtParaLocalStorage)
@@ -962,7 +992,6 @@ function editarTablero(){
             if(tablero.id === id){    
 
                 tareas = tareas.filter(tarea => tarea.tablero !== tablero.titulo)
-
               
             }
         })
@@ -980,13 +1009,21 @@ function editarTablero(){
         actualizarLocalStorage(nombreVarLocalStorage,obtParaLocalStorage)
 
 
+            tabsActive = {
+            tabIdActivo: '',
+            contentIdActivo: '',
+            colorActivo: ''
+            }
+            obtParaLocalStorage = JSON.stringify(tabsActive)
+            nombreVarLocalStorage = 'tabsActive' 
+            actualizarLocalStorage(nombreVarLocalStorage,obtParaLocalStorage) 
+
         limpiarHTMLTableros()
         mostrarTableros()
         // clickTabs()
 
 }
 
-   
 
 /////////// FIN TABLEROS //////////////
 
@@ -1013,14 +1050,16 @@ function editarTablero(){
 
     function addTarea() {
 
-    console.log(tabIdActivo)
+    // console.log(tabIdActivo)
 
-    console.log(tabIdActivo.split('-')[1])
+    tabsActive = JSON.parse(localStorage.getItem('tabsActive'))
+
+    console.log(tabsActive.tabIdActivo.split('-')[1])
 
 
     // formTareaNombreTablero.value
 
-        const $divElements = document.getElementById("list1-"+tabIdActivo.split('-')[1])
+        const $divElements = document.getElementById("list1-"+tabsActive.tabIdActivo.split('-')[1])
         if(formTareaUsuario.value === '' && formTareaDescripcion.value.trim() === ''){ 
             alert("Para agregar una Tarea tenés que completar todos los campos")
         }else if($divElements === null){
@@ -1028,7 +1067,6 @@ function editarTablero(){
 
         }else if(editandoTarea){
             editarTarea()
-
 
             modalTareaEditada = `<div class ="card2" ><p> Tarea Editada!.</p>
             <div class="modal-footer">
@@ -1048,7 +1086,7 @@ function editarTablero(){
             objTareaNueva.tablero = formTareaNombreTablero.value
             objTareaNueva.descripcion = formTareaDescripcion.value
             objTareaNueva.titulo = 'sin titulo'
-            objTareaNueva.estado = 'list1-'+tabIdActivo.split('-')[1]
+            objTareaNueva.estado = 'list1-'+tabsActive.tabIdActivo.split('-')[1]
 
             agregarTarea()
 
@@ -1093,9 +1131,6 @@ function limpiarObjTarea() {
     // color: '',
     // tipoUser:''   
 }
-
-
-
 
 
 function cargarTarea(tarea){
